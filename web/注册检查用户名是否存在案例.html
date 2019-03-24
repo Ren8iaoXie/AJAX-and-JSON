@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易注册检查用户名是否存在案例</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            //失去焦点时
+            $("#username").blur(function () {
+                //获取用户输入的username
+                var username = $(this).val();
+                $.get("findUsernameServlet",{"username":username},function (data) {
+                    //判断是否存在
+                    if(data.userExist){
+                        //用户名存在
+                        $("#span").css("color","pink");
+                        $("#span").html(data.msg);
+
+                    }else{
+                        //用户名不存在
+                        $("#span").css("color","green");
+                        $("#span").html(data.msg);
+                    }
+                    //记得设置返回的类型是json类型,如果不设置，可在服务器设置返回的类型response.setContentTyoe("application/json";charset=utf-8);
+                },/*"json"*/);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+
+    </div>
+    <form>
+
+        <div><input type="text" placeholder="请输入用户名" id="username">
+        <span id="span" ></span></div>
+        <input type="password" placeholder="请输入密码" ><br>
+        <input type="submit" value="注册"><br>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+
+    function fun() {
+        //1.创建对象
+        var xmlhttp;
+        if(window.XMLHttpRequest){
+            xmlhttp=new XMLHttpRequest();
+        }else{
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        // 2.建立连接
+        xmlhttp.open("GET","ajaxServlet?username=zhangsan",true);
+        //3.发送请求
+        xmlhttp.send();
+        //4.完成请求并接受服务器响应
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+                var responseText = xmlhttp.responseText;
+               alert(responseText);
+            }
+        }
+    }
+</script>
+<body>
+    <input type="button" value="发送异步消息" onclick="fun()" />
+    <input type="text" />
+</body>
+</html>

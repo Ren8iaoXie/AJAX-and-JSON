@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        // 基本格式
+        var  person={"name":"张三","age":18,"gender":true};
+        //获取值
+        /*
+        alert(person.name);
+        alert(person["age"]);
+        */
+
+        //{}→[]嵌套
+        var persons={
+            "persons":[{"name":"zhangsan","age":18,"gender":true},
+                {"name":"李四","age":11,"gender":true},
+                {"name":"zhangsan","age":18,"gender":true}
+                ]
+        };
+        //获取值
+        // alert(persons.persons[1].age);
+
+        var ps=[{"name":"王五","age":18,"gender":true},
+            {"name":"张六","age":18,"gender":true},
+            {"name":"柳七","age":18,"gender":true}];
+        //获取值
+        //     alert(ps[0].name);
+
+            //遍历基本格式的JSON
+        // for(var key in person){
+        //     alert(key+":"+person[key]);
+        // }
+
+            //数组遍历
+        for(var i=0;i<ps.length;i++){
+            var p=ps[i];
+            for(key in p){
+                alert(key+":"+p[key]);
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
